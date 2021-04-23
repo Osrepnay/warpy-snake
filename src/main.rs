@@ -60,8 +60,8 @@ struct SentGame {
 struct Board {
     height: u8,
     width: u8,
-    food: Vec<HashMap<String, u16>>,
-    hazards: Vec<HashMap<String, u16>>,
+    food: Vec<Coordinate>,
+    hazards: Vec<Coordinate>,
     snakes: Vec<Battlesnake>,
 }
 
@@ -70,9 +70,14 @@ struct Battlesnake {
     id: String,
     name: String,
     health: u8,
-    body: Vec<HashMap<String, u16>>,
+    body: Vec<Coordinate>,
     latency: String,
-    head: HashMap<String, u16>,
+    head: Coordinate,
     length: u16,
     shout: String,
+}
+#[derive(Debug, Deserialize, Eq, PartialEq)]
+struct Coordinate {
+    x : u8,
+    y : u8,
 }
